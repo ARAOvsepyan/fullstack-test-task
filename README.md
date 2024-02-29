@@ -1,2 +1,2 @@
-# fullstack-trst-task
+# Fullstack test task
  
