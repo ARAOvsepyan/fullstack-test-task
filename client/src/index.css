@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Montserrat:wght@400;600;900&display=swap');
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10%;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
