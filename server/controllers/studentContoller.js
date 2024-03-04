@@ -20,9 +20,10 @@ class StudentController {
 			if (params.patronymic) where.patronymic = {[Op.iLike]: `${params.patronymic}%`};
 
 			const student = await StudentModel.findAndCountAll({
+				attributes: ["last_name", "first_name", "patronymic"],
 				where,
-				offset: (page - 1) * per_page,
-				limit: per_page,
+				offset: page,
+				limit: per_page-page,
 			});
 
 
