@@ -1,4 +1,4 @@
-const {ProfessorModel} = require("../models/models");
+const {ProfessorModel, ThesisModel, StudentModel} = require("../models/models");
 const {Op} = require("sequelize");
 const {validationResult} = require("express-validator");
 const ProfessorDto = require("../dtos/professorDto");
@@ -8,12 +8,13 @@ class ProfessorController {
 	async getAll(req, res, next) {
 		try {
 			const where = {};
+			const order = {};
 
 			const params = new ProfessorDto(req.query);
 
-			const page = req.query.page ? parseInt(req.query.page) : 1;
-			const per_page = req.query.per_page ? parseInt(req.query.per_page) : 1;
-
+			const page = req.query.page ? parseInt(req.query.page) : 0;
+			const per_page = req.query.per_page ? parseInt(req.query.per_page) : 500;
+			
 			if (params.email) where.email = {[Op.iLike]: `${params.email}%`};
 			if (params.first_name) where.first_name = {[Op.iLike]: `${params.first_name}%`};
 			if (params.last_name) where.last_name = {[Op.iLike]: `${params.last_name}%`};
@@ -21,12 +22,29 @@ class ProfessorController {
 			if (params.phone) where.phone = {[Op.iLike]: `${params.phone}%`};
 			if (params.num_of_thesis) where.num_of_thesis = {[Op.eq]: params.num_of_thesis};
 
-			const professor = await ProfessorModel.findAndCountAll({
-				where,
-				offset: (page - 1) * per_page,
-				limit: per_page,
-			});
+			let professor = {};
 
+			if (req.query.sort) {
+				order.sort = req.query.sort;
+				if (req.query.validate) {
+					order.validate = req.query.validate
+				};
+				
+				professor = await ProfessorModel.findAndCountAll({
+					attributes: ["last_name", "first_name", "patronymic", "email", "phone", "num_of_thesis"],
+					where,
+					offset: page,
+					limit: per_page - page,
+					order: [[order.sort, order.validate]]
+				});
+			} else {
+				professor = await ProfessorModel.findAndCountAll({
+					attributes: ["last_name", "first_name", "patronymic", "email", "phone", "num_of_thesis"],
+					where,
+					offset: page,
+					limit: per_page-page,
+				});
+			}
 
 			if (professor.count <= 0) {
 				return next(ApiError.NotFound("Преподователь не найден"));
