@@ -1,8 +1,9 @@
 const { ProfessorModel, ThesisModel, StudentModel } = require('../models/models');
-const { Op } = require('sequelize');
+const { Op, QueryTypes } = require('sequelize');
 const { validationResult } = require('express-validator');
 const ProfessorDto = require('../dtos/professorDto');
 const ApiError = require('../error/apiError');
+const sequelize = require('../db');
 
 class ProfessorController {
   async getAll(req, res, next) {
@@ -60,7 +61,10 @@ class ProfessorController {
     try {
       const { id } = req.params;
 
-      const professorById = await ProfessorModel.findByPk(id);
+      const professorById = await sequelize.query('SELECT * FROM "professors" WHERE id = ?', {
+        replacements: [id],
+        type: QueryTypes.SELECT,
+      });
 
       if (!professorById) {
         return next(ApiError.NotFound('Преподователь не найден'));

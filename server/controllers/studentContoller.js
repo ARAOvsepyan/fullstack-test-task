@@ -1,9 +1,11 @@
 const { StudentModel } = require('../models/models');
-const { Op } = require('sequelize');
+const { Op, QueryTypes } = require('sequelize');
 const { validationResult } = require('express-validator');
+const { uuidv4 } = require('uuid')
 
 const StudentDto = require('../dtos/StudentDto');
 const ApiError = require('../error/apiError');
+const sequelize = require('../db');
 
 class StudentController {
   async getAll(req, res, next) {
@@ -60,7 +62,7 @@ class StudentController {
 
       if (error.length) {
         return next(ApiError.BadRequest(error[0].msg, error));
-      }
+      }      
 
       const student = await StudentModel.create(user);
 
@@ -102,13 +104,21 @@ class StudentController {
     try {
       const { id } = req.params;
 
-      const StudentById = await StudentModel.findByPk(id);
+      // const StudentById = await StudentModel.findByPk(id);
+      const studentById = await sequelize.query('SELECT * FROM "students" WHERE id = ?', {
+        replacements: [id],
+        type: QueryTypes.SELECT,
+      });
 
-      if (!StudentById) {
+      if (studentById.length == 0) {
         return next(ApiError.NotFound('Студент не найден'));
       }
 
-      const Student = await StudentById.destroy();
+      // const Student = await StudentById.destroy();
+      const Student = await sequelize.query('DELETE FROM "students" WHERE id = ?', {
+        replacements: [id],
+        type: QueryTypes.DELETE,
+      })
 
       if (!Student) {
         return next(ApiError.BadRequest('Не удалось удалить'));
