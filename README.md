@@ -9,9 +9,21 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
-
-[![SUz3d.gif](https://s9.gifyu.com/images/SUz3d.gif)](https://gifyu.com/image/SUz3d)
 </div>
+
+## ВОЗМОЖНОСТИ
+
+ФЛЬТРАЦИЯ
+
+[![SUzJW.gif](https://s9.gifyu.com/images/SUzJW.gif)](https://gifyu.com/image/SUzJW)
+
+СОЗДАНИЕ СТУДЕНТА И ЕГО ДИПЛОМНОЙ РАБОТЫ
+
+[![SUzJ4.gif](https://s9.gifyu.com/images/SUzJ4.gif)](https://gifyu.com/image/SUzJ4)
+
+ОБНОВЛЕНИЕ И УДАЛЕННЫЕ ДАННЫХ
+
+[![SUzJ9.gif](https://s9.gifyu.com/images/SUzJ9.gif)](https://gifyu.com/image/SUzJ9)
 
 ## BACKEND
 
