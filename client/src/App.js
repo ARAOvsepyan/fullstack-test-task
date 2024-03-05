@@ -1,13 +1,13 @@
 import React from 'react'
-import Topbar from "./scenes/global/TopBar";
-import SideBar from "./scenes/global/SideBar";
-import AppRouter from './components/AppRouter';
+import Topbar from './scenes/global/TopBar'
+import SideBar from './scenes/global/SideBar'
+import AppRouter from './components/AppRouter'
 
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { ColorModeContext, useMode } from './theme'
 
 const App = () => {
-  const [theme, colorMode] = useMode();
+  const [theme, colorMode] = useMode()
 
   return (
     <ColorModeContext.Provider value={colorMode}>

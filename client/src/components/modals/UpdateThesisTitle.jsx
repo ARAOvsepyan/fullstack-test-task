@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import { Dialog, DialogContentText, useTheme, DialogActions, TextField, Button, DialogContent, Typography } from '@mui/material';
-import { tokens } from '../../theme';
+import { Dialog, DialogContentText, useTheme, DialogActions, TextField, Button, DialogContent, Typography } from '@mui/material'
+import { tokens } from '../../theme'
 
-const UpdateThesisTitle = ({open, handleClose, data, onChange, updateRow, current}) => {
-  const {title} = data;
+const UpdateThesisTitle = ({ open, handleClose, data, onChange, updateRow, current }) => {
+  const { title } = data
 
-  const theme = useTheme();
+  const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
@@ -13,9 +12,9 @@ const UpdateThesisTitle = ({open, handleClose, data, onChange, updateRow, curren
       open={open}
       onClose={handleClose}
     >
-      <DialogContent 
+      <DialogContent
         sx={{
-          backgroundColor: colors.blueAccent[500],
+          backgroundColor: colors.blueAccent[500]
         }}
       >
         <DialogContentText>
@@ -43,4 +42,4 @@ const UpdateThesisTitle = ({open, handleClose, data, onChange, updateRow, curren
   )
 }
 
-export default UpdateThesisTitle;
+export default UpdateThesisTitle

@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import { Dialog, DialogContentText, useTheme, DialogActions, TextField, Button, DialogContent, Typography } from '@mui/material';
-import { tokens } from '../../theme';
+import { Dialog, DialogContentText, useTheme, DialogActions, TextField, Button, DialogContent, Typography } from '@mui/material'
+import { tokens } from '../../theme'
 
-const AddThesis = ({open, handleClose, data, onChange, addRow}) => {
-  const {title, last_name, first_name, patronymic} = data;
+const AddThesis = ({ open, handleClose, data, onChange, addRow }) => {
+  const { title, lastName, firstName, patronymic } = data
 
-  const theme = useTheme();
+  const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
@@ -13,9 +12,9 @@ const AddThesis = ({open, handleClose, data, onChange, addRow}) => {
       open={open}
       onClose={handleClose}
     >
-      <DialogContent 
+      <DialogContent
         sx={{
-          backgroundColor: colors.blueAccent[500],
+          backgroundColor: colors.blueAccent[500]
         }}
       >
         <DialogContentText>
@@ -25,8 +24,8 @@ const AddThesis = ({open, handleClose, data, onChange, addRow}) => {
           autoFocus
           required
           margin='normal'
-          id='last_name'
-          value={last_name}
+          id='lastName'
+          value={lastName}
           onChange={e => onChange(e)}
           label='Фамилия'
           type='text'
@@ -35,8 +34,8 @@ const AddThesis = ({open, handleClose, data, onChange, addRow}) => {
         <TextField
           required
           margin='normal'
-          id='first_name'
-          value={first_name}
+          id='firstName'
+          value={firstName}
           onChange={e => onChange(e)}
           label='Имя'
           type='text'
@@ -74,4 +73,4 @@ const AddThesis = ({open, handleClose, data, onChange, addRow}) => {
   )
 }
 
-export default AddThesis;
+export default AddThesis

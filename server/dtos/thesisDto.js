@@ -1,12 +1,12 @@
-const PersonEntity = require("./personEntity");
+const PersonEntity = require('./personEntity');
 
-module.exports = class ThesisDto extends PersonEntity{
-	title;
-	professorId;
+module.exports = class ThesisDto extends PersonEntity {
+  title;
+  professorId;
 
-	constructor(model) {
-		super({...model});
-		this.title = model.title;
-		this.professorId = model.professorId;
-	}
+  constructor(model) {
+    super({ ...model });
+    this.title = model.title;
+    this.professorId = model.professorId;
+  }
 };
