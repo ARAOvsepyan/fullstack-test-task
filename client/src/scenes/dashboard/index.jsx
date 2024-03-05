@@ -38,8 +38,9 @@ const Dashboard = observer(() => {
             '--ag-font-size': `${fonts.body1.fontSize}`,
             '--ag-font-family': `${fonts.body1.fontFamily}`
           },
-          '& .ag-theme-quartz .ag-header': {
-            'font-family': `${fonts.h1.fontFamily}`
+          '& .ag-theme-quartz .ag-header .ag-header-row': {
+            'font-family': `${fonts.h1.fontFamily}`,
+            color: 'white !important'
           },
           '& .ag-theme-quartz .ag-tabs .ag-menu': {
             'border-color': `${colors.blueAccent[500]}`
